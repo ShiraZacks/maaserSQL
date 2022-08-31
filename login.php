@@ -18,7 +18,7 @@
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($conn, $password);
         // Check user exists in the database
-        $query    = "SELECT * FROM users WHERE username='$username'
+        $query    = "SELECT * FROM maaser WHERE username='$username'
                     AND password='" . md5($password) . "'";
         $result = mysqli_query($conn, $query) or die("Something went wrong...");
         $rows = mysqli_num_rows($result);

@@ -15,8 +15,6 @@
         //escapes special characters in a string
         $username = stripslashes($_REQUEST['username']);    // removes backslashes
         $username = mysqli_real_escape_string($conn, $username);
-        $email    = stripslashes($_REQUEST['email']);
-        $email    = mysqli_real_escape_string($conn, $email);
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($conn, $password);
         $confirmPassword = stripslashes($_REQUEST['confirmPassword']);
@@ -26,9 +24,6 @@
         if(empty($username)) {
             array_push($errors, "Username is required");
         }
-        if(empty($email)) {
-            array_push($errors, "Email is required");
-        }
         if(empty($password)) {
             array_push($errors, "Password is required");
         }
@@ -37,22 +32,19 @@
         }
 
         //make sure that the email and username are not already there.
-        $user_check_query = "SELECT * FROM users WHERE username= '$username' or email='$email' LIMIT 1";
+        $user_check_query = "SELECT * FROM maaser WHERE username= '$username' LIMIT 1";
         $result = mysqli_query($conn, $user_check_query);
         $user = mysqli_fetch_assoc($result);
         if($user){
             if($user['username'] === $username){
                 array_push($errors, "Username already exists");
             }
-            if($user['email'] === $email){
-                array_push($errors, "Email already exists");
-            }
         }
         mysqli_free_result($result);
         //Only insert if there are no errors
         if(count($errors)== 0){
            //after error checks  we will now insert
-            $query    = "INSERT INTO users (username, password, email) VALUES ('$username', '" . md5($password) . "', '$email')";
+            $query    = "INSERT INTO maaser (username, password) VALUES ('$username', '" . md5($password) . "')";
             $result   = mysqli_query($conn, $query);
             if ($result) {
                 echo "<div class='form'>
@@ -89,9 +81,6 @@
 
         <p><label for="username">Username : </label>
             <input type="text" name="username" required></p>
-        
-        <p><label for="email">Email : </label>
-            <input type="email" name="email" required></p>
         
         <p><label for="password">Password : </label>
             <input type="password" name="password"required></p>
