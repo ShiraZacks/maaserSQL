@@ -1,0 +1,14 @@
+body{
+    background-image: linear-gradient(to right,rgb(88, 180, 255), rgb(255, 95, 255));
+    text-align: center;
+}
+button{
+    background-color: rgb(255, 95, 255);
+    transition-duration: 0.4s;
+}
+button:hover{
+    background-color: rgb(88,180,255);
+}
+fieldset{
+    background-image: linear-gradient(to left, rgb(255,95,255), rbg(88,180,255));
+}
