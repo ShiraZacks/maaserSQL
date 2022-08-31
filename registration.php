@@ -68,7 +68,7 @@
                     <h3>You have errors:<br>
                             *required fields are missing<br>
                             *passwords do not match<br>
-                            *username/email already exists.</h3><br/>
+                            *username already exists.</h3><br/>
                     <p class='link'>Click here to <a href='registration.php'>try</a> again.</p>
                     </div>";
             }
