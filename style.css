@@ -12,3 +12,12 @@ button:hover{
 fieldset{
     background-image: linear-gradient(to left, rgb(255,95,255), rbg(88,180,255));
 }
+thead{
+    text-align: center;
+}
+
+th{
+width: 12.5%;
+border: 3px solid white;
+
+}

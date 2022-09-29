@@ -7,7 +7,8 @@
 
 	// insert to db if submit button is clicked
 	if (isset($_POST['submit'])) {
-			if ((empty($_POST['source'])&&($_POST['date_earned'])&&($_POST['earned']))||((empty($_POST['recipient'])&&($_POST['date_given'])&&($_POST['given'])))) {
+			if ((empty($_POST['source'])||($_POST['date_earned'])||($_POST['earned'])&&(empty($_POST['recipient'])&&($_POST['date_given'])&&($_POST['given'])))||
+			((empty($_POST['recipient'])||($_POST['date_given'])||($_POST['given']))&&(empty($_POST['source'])&&($_POST['date_earned'])&&($_POST['earned'])))){
 				$errors = "Looks like you left something out...";
 			}else{
 					//things to submit
@@ -72,13 +73,12 @@
 		$i = 1; while ($row = mysqli_fetch_array($maaser)) { ?>
 			<tr>
 				<td> <?php echo $i; ?> </td>
-				<td class="id"><?php echo $row['id'];?></td>
 				<td class="source"><?php echo $row['source'];?></td>
 				<td class="date_earned"><?php echo $row['date_earned'];?></td>
 				<td class="earned"><?php echo $row['earned'];?></td>
-				<td class="maaser_owed"><?php echo $row['maaser_owed'];?></td>
+				<td class="maaser_owed"><?php echo $row['maaser_owed'];?>  empty set</td>
 				<td class="recipient"><?php echo $row['recipient'];?></td>
-				<td class="date_given"><?php echo $row['source'];?></td>
+				<td class="date_given"><?php echo $row['date_given'];?></td>
 				<td class="given"><?php echo $row['given']; ?></td>
 			</tr>
 		<?php $i++; } ?>	
