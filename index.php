@@ -1,9 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION["success"])){
-    header('location: login.php');
-}
-?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,23 +7,12 @@ if(!isset($_SESSION["success"])){
     <title>Maaser Calculator</title>
 </head>
 <body>
-<?php
-        if(isset($_SESSION['success'])): ?>
-        <div>
-            <h3>
-                <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                ?>
-            </h3>
+          
         </div>
-        <?php endif ?>
         <!-- if the user logs in print information about the user  -->
-        <?php if(isset($_SESSION['username'])): ?>
-            <h3>Welcome <strong> <?php echo $_SESSION['username']; ?> </strong></h3><br>
-            <p></p>
-            <p><a href="logout.php">Logout</a></p>
-        <?php endif ?>
+
+            <h3>Welcome <strong> Maaser User! </strong></h3><br>
+            <p>this is a maaser tracking application. Use it well.</p>
     </body>
 </body>
 </html>
