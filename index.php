@@ -62,11 +62,9 @@ if (isset($_POST['submit'])) /*{
 				<th>Source</th>
 				<th>Date Earned</th>
 				<th>Amount Earned</th>
-				<th>Maaser Owed</th>
 				<th>Recipient</th>
 				<th>Date Given</th>
 				<th>Amount Given</th>
-				<th>Total</th>
 			</tr>
 		</thead>
 
@@ -74,7 +72,7 @@ if (isset($_POST['submit'])) /*{
 			<?php
 			// select all tasks if page is visited or refreshed
 			$maaser = mysqli_query($db, "SELECT * FROM maaser");
-			
+
 			$result = mysqli_query($db, 'SELECT SUM(earned) AS added_earned FROM maaser'); 
 			$row = mysqli_fetch_assoc($result); 
 			$earned_sum = floatval($row['added_earned']);//intval()turn it into a int!!! yayyyy!!  except that doesnt have decimals. floatval does
@@ -84,12 +82,12 @@ if (isset($_POST['submit'])) /*{
 			$divide = ($earned_sum/10);
 			$combined = ($divide - $given_sum);
 
-			echo "$earned_sum <br> $given_sum <br> $divide <br> $combined";
+	//s		echo "$earned_sum <br> $given_sum <br> $divide <br> $combined";
 
 
 
 			$i = 1;
-			while (($row = mysqli_fetch_array($maaser))/* && ($owe = mysqli_fetch_array($minus))*/){
+			while (($row = mysqli_fetch_array($maaser))){
 		
 		?>
 				<tr>
@@ -97,18 +95,20 @@ if (isset($_POST['submit'])) /*{
 					<td class="source"><?php echo $row['source']; ?></td>
 					<td class="date_earned"><?php echo $row['date_earned']; ?></td>
 					<td class="earned"><?php echo $row['earned']; ?></td>
-					<td class="maaser_owed"><?php //echo $owe['maaser_owed']; ?></td>
 					<td class="recipient"><?php echo $row['recipient']; ?></td>
 					<td class="date_given"><?php echo $row['date_given']; ?></td>
 					<td class="given"><?php echo $row['given']; ?></td>
-					<td class="total"><?php //echo $minus;?></td>
-
-			<?php $i++;
+					
+					</tr><?php $i++;
 			}?> 
-				
-				</tr>
 		</tbody>
 	</table>
+			
+					<p class="maaser_owed">Maaser To Date: <?php echo $divide; ?></p>
+					<p class="total">Amount Owed:<?php echo $combined;?></p>
+
+				
+				
 </body>
 
 </html>
