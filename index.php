@@ -66,6 +66,7 @@ if (isset($_POST['submit'])) /*{
 				<th>Recipient</th>
 				<th>Date Given</th>
 				<th>Amount Given</th>
+				<th>Total</th>
 			</tr>
 		</thead>
 
@@ -73,9 +74,20 @@ if (isset($_POST['submit'])) /*{
 			<?php
 			// select all tasks if page is visited or refreshed
 			$maaser = mysqli_query($db, "SELECT * FROM maaser");
-			$result = mysqli_query($db, "SELECT earned*.1 as maaser_owed FROM `maaser`;");
+		/*  $sum = mysqli_query($db, "SELECT SUM(earned) as maaser_owed FROM `maaser`;");
+			$full_amount = mysqli_fetch_assoc($sum);
+			$divide = ($full_amount['maaser_owed'] * .1);
+			echo $divide;
+			$other_sum = mysqli_query($db, "SELECT SUM(given) as maaser_given FROM `maaser`;");
+			//$minus = ($divide['maaser_owed'] - $other_sum['maaser_given']);*/
+
+			$result = mysqli_query($db, 'SELECT SUM(earned) AS added_earned FROM maaser'); 
+			$row = mysqli_fetch_assoc($result); 
+			$sum = $row['added_earned'];
+			echo $sum;
+
 			$i = 1;
-			while (($row = mysqli_fetch_array($maaser)) && ($owe = mysqli_fetch_array($result))){
+			while (($row = mysqli_fetch_array($maaser)) && ($owe = mysqli_fetch_array($minus))){
 		
 		?>
 				<tr>
@@ -87,6 +99,7 @@ if (isset($_POST['submit'])) /*{
 					<td class="recipient"><?php echo $row['recipient']; ?></td>
 					<td class="date_given"><?php echo $row['date_given']; ?></td>
 					<td class="given"><?php echo $row['given']; ?></td>
+					<td class="total"><?php echo $minus;?></td>
 
 			<?php $i++;
 			}?> 
