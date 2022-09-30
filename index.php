@@ -78,20 +78,31 @@ if (isset($_POST['submit'])) /*{
 			$full_amount = mysqli_fetch_assoc($sum);
 			$divide = ($full_amount['maaser_owed'] * .1);
 			echo $divide;
-			$other_sum = mysqli_query($db, "SELECT SUM(given) as maaser_given FROM `maaser`;");
 			//$minus = ($divide['maaser_owed'] - $other_sum['maaser_given']);*/
 
 			$result = mysqli_query($db, 'SELECT SUM(earned) AS added_earned FROM maaser'); 
 			$row = mysqli_fetch_assoc($result); 
-			$sum = intval($row['added_earned']);//intval()turn it into a in!!! yayyyy!!
-			echo $sum;
+			$earned_sum = floatval($row['added_earned']);//intval()turn it into a int!!! yayyyy!!  except that doesnt have decimals. floatval does
+			$other_result = mysqli_query($db, "SELECT SUM(given) as added_given FROM `maaser`;");
+			$row2 = mysqli_fetch_assoc($other_result); 
+			$given_sum = floatval($row2['added_given']);
+			$divide = ($earned_sum/10);
+			$combined = ($divide - $given_sum);
+
+			echo "$earned_sum <br> $given_sum <br> $divide <br> $combined";
+
+
+
+
+
+
 
 
 
 
 
 			$i = 1;
-			while (($row = mysqli_fetch_array($maaser)) && ($owe = mysqli_fetch_array($minus))){
+			while (($row = mysqli_fetch_array($maaser))/* && ($owe = mysqli_fetch_array($minus))*/){
 		
 		?>
 				<tr>
@@ -99,11 +110,11 @@ if (isset($_POST['submit'])) /*{
 					<td class="source"><?php echo $row['source']; ?></td>
 					<td class="date_earned"><?php echo $row['date_earned']; ?></td>
 					<td class="earned"><?php echo $row['earned']; ?></td>
-					<td class="maaser_owed"><?php echo $owe['maaser_owed']; ?></td>
+					<td class="maaser_owed"><?php //echo $owe['maaser_owed']; ?></td>
 					<td class="recipient"><?php echo $row['recipient']; ?></td>
 					<td class="date_given"><?php echo $row['date_given']; ?></td>
 					<td class="given"><?php echo $row['given']; ?></td>
-					<td class="total"><?php echo $minus;?></td>
+					<td class="total"><?php //echo $minus;?></td>
 
 			<?php $i++;
 			}?> 
