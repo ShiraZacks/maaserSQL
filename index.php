@@ -83,8 +83,12 @@ if (isset($_POST['submit'])) /*{
 
 			$result = mysqli_query($db, 'SELECT SUM(earned) AS added_earned FROM maaser'); 
 			$row = mysqli_fetch_assoc($result); 
-			$sum = $row['added_earned'];
+			$sum = intval($row['added_earned']);//intval()turn it into a in!!! yayyyy!!
 			echo $sum;
+
+
+
+
 
 			$i = 1;
 			while (($row = mysqli_fetch_array($maaser)) && ($owe = mysqli_fetch_array($minus))){
