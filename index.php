@@ -74,12 +74,7 @@ if (isset($_POST['submit'])) /*{
 			<?php
 			// select all tasks if page is visited or refreshed
 			$maaser = mysqli_query($db, "SELECT * FROM maaser");
-		/*  $sum = mysqli_query($db, "SELECT SUM(earned) as maaser_owed FROM `maaser`;");
-			$full_amount = mysqli_fetch_assoc($sum);
-			$divide = ($full_amount['maaser_owed'] * .1);
-			echo $divide;
-			//$minus = ($divide['maaser_owed'] - $other_sum['maaser_given']);*/
-
+			
 			$result = mysqli_query($db, 'SELECT SUM(earned) AS added_earned FROM maaser'); 
 			$row = mysqli_fetch_assoc($result); 
 			$earned_sum = floatval($row['added_earned']);//intval()turn it into a int!!! yayyyy!!  except that doesnt have decimals. floatval does
@@ -90,14 +85,6 @@ if (isset($_POST['submit'])) /*{
 			$combined = ($divide - $given_sum);
 
 			echo "$earned_sum <br> $given_sum <br> $divide <br> $combined";
-
-
-
-
-
-
-
-
 
 
 
