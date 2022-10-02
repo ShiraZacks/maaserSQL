@@ -1,23 +1,26 @@
 body{
-    background-image: linear-gradient(to right,rgb(88, 180, 255), rgb(255, 95, 255));
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
     text-align: center;
 }
 button{
-    background-color: rgb(255, 95, 255);
+    width: 50%;
+    height: 50px;
+    border: 6px solid white;
+    color: white;
+    font-size: larger;
+    background-color: #3f86a550;
     transition-duration: 0.4s;
 }
 button:hover{
-    background-color: rgb(88,180,255);
-}
-fieldset{
-    background-image: linear-gradient(to left, rgb(255,95,255), rbg(88,180,255));
-}
-thead{
-    text-align: center;
+    background-color: #f69c3c50;
 }
 
 th{
 width: 11.11%;
-border: 3px solid white;
-
+border: 7px solid white;
 }
+
+td{
+    border: 3px solid white;
+}
+
