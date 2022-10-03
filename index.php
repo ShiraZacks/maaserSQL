@@ -6,12 +6,10 @@ $errors = "";
 $db = mysqli_connect("localhost", "root", "", "maaser");
 //TODO fix the if statement
 // insert to db if submit button is clicked
-if (isset($_POST['submit'])) /*{
-			if ((empty($_POST['source'])||($_POST['date_earned'])||($_POST['earned'])&&(empty($_POST['recipient'])&&($_POST['date_given'])&&($_POST['given'])))){
+if (isset($_POST['submit'])) {
+		/*	if ((empty($_POST['source'])||($_POST['date_earned'])||($_POST['earned'])||($_POST['recipient'])||($_POST['date_given'])||($_POST['given']))){
 				$errors = "Looks like you left something out...";
-			}elseif ((empty($_POST['recipient'])||($_POST['date_given'])||($_POST['given']))&&(empty($_POST['source'])&&($_POST['date_earned'])&&($_POST['earned']))){
-				$errors = "Looks like you left something out...";
-			}else*/ {
+			}else {*/
 	//things to submit
 	$source = $_POST['source'];
 	$date_earned = $_POST['date_earned'];
@@ -27,7 +25,6 @@ if (isset($_POST['submit'])) /*{
 	header('location: index.php');
 	/*	}*/
 };
-
 ?>
 
 <!DOCTYPE html>
