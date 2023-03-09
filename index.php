@@ -7,9 +7,11 @@ $db = mysqli_connect("localhost", "root", "", "maaser");
 //TODO fix the if statement
 // insert to db if submit button is clicked
 if (isset($_POST['submit'])) {
-		/*	if ((empty($_POST['source'])||($_POST['date_earned'])||($_POST['earned'])||($_POST['recipient'])||($_POST['date_given'])||($_POST['given']))){
-				$errors = "Looks like you left something out...";
-			}else {*/
+	if ((empty($_POST['source'])||($_POST['date_earned'])||($_POST['earned']))&&(empty($_POST['recipient'])&&($_POST['date_given'])&&($_POST['given']))){
+		$errors = "Looks like you left something out...";
+	}elseif ((empty($_POST['recipient'])||($_POST['date_given'])||($_POST['given']))&&(empty($_POST['source'])&&($_POST['date_earned'])&&($_POST['earned']))){
+		$errors = "Looks like you left something out...";
+	}else{
 	//things to submit
 	$source = $_POST['source'];
 	$date_earned = $_POST['date_earned'];
@@ -23,7 +25,7 @@ if (isset($_POST['submit'])) {
 	mysqli_query($db, $sql);
 
 	header('location: index.php');
-	/*	}*/
+	}
 };
 ?>
 
@@ -33,6 +35,8 @@ if (isset($_POST['submit'])) {
 <head>
 	<title>Maaser Tracker</title>
 	<link rel="stylesheet" type="text/css" href="style.css?<?= time() ?>">
+    <link rel="shortcut icon" type="image/jpeg" href="favicon.jpg" />
+	
 </head>
 
 <body>
@@ -97,7 +101,7 @@ if (isset($_POST['submit'])) {
 					<td class="given"><?php echo $row['given']; ?></td>
 					
 					</tr><?php $i++;
-			}?> 
+			} ?> 
 		</tbody>
 	</table>
 			
