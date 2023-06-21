@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 	<div class="heading">
 		<h2 style="font-style: 'Hervetica';">Maaser Tracker</h2>
 	</div>
-	<form method="post" action="index.php" class="input_form">
+	<form method="post" action="index.php" class="input_form" autocomplete="off">
 		<?php if (isset($errors)) { ?>
 			<p><?php echo $errors; ?></p>
 		<?php } ?>
