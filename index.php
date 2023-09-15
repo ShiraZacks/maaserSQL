@@ -4,7 +4,6 @@ $errors = "";
 
 // connect to database
 $db = mysqli_connect("localhost", "root", "", "maaser");
-//TODO fix the if statement
 // insert to db if submit button is clicked
 if (isset($_POST['submit'])) {
 	if ((empty($_POST['source'])||($_POST['date_earned'])||($_POST['earned']))&&(empty($_POST['recipient'])&&($_POST['date_given'])&&($_POST['given']))){
