@@ -1,8 +1,9 @@
-body{
+body {
     background: linear-gradient(0.25turn, #85daff, #dcffc1, #ffc484);
     text-align: center;
 }
-button{
+
+button {
     width: 50%;
     height: 50px;
     border: 6px solid white;
@@ -11,16 +12,20 @@ button{
     background-color: #3f86a550;
     transition-duration: 0.4s;
 }
-button:hover{
+
+button:hover {
     background-color: #f69c3c50;
 }
 
-th{
-width: 11.11%;
-border: 7px solid white;
+table {
+    margin: 10px auto;
 }
 
-td{
+th {
+    width: 11.11%;
+    border: 7px solid white;
+}
+
+td {
     border: 3px solid white;
 }
-
