@@ -1,0 +1,12 @@
+Here is how the database should be set up:
+
+Database Name: "maaser"
+Table: "maaser"
+
+6 Rows:
+"source" varchar 1024
+"date_earned" varchar 255
+"earned"  decimal 10,2
+"recipient" varchar 60000
+"date_given" varchar 255
+"given" decimal 10,2
